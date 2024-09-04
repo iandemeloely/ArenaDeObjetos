@@ -66,4 +66,8 @@ public class Pessoa {
         
     }
 
+    public void dano(int dano) {
+        this.PontosDeVida = this.PontosDeVida - dano;
+    }
+
 }

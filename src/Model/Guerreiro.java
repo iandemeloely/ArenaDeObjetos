@@ -23,6 +23,10 @@ public class Guerreiro {
         public void setArmamento(String armamento) {
             this.armamento = armamento;
         }
+
+        public void atacar(){
+            this.dano(10);
+        }
         
 
         
