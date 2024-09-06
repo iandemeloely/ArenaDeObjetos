@@ -7,8 +7,8 @@ public class Ladrao extends Pessoa {
 
     }
 
-    public Ladrao(String nome, String cabelo, String olho, boolean sexo, String planodefuga) {
-        super(nome, cabelo, olho, sexo);
+    public Ladrao(String nome, String cabelo, String olho, String pele, boolean sexo, String planodefuga) {
+        super(nome, cabelo, olho, pele, sexo);
         this.planodefuga = planodefuga;
     }
     public String getplanodefuga() {

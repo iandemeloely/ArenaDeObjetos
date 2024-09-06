@@ -1,35 +1,28 @@
 package Model;
 
-public class Guerreiro {
+public class Guerreiro extends Pessoa {
+    private String armamento;
 
-    public class guerreiro extends Pessoa{
-        private String armamento;
+    public Guerreiro() {
 
-        public guerreiro() {
-        
-        }
+    }
 
-        public guerreiro(String nome, String cabelo, String olho, boolean sexo, String armamento) {
-            super(nome, cabelo, olho, sexo);
-            this.armamento = armamento;
+    public Guerreiro(String nome, String cabelo, String olho, String pele, boolean sexo, String armamento) {
+        super(nome, cabelo, olho, pele, sexo);
+        this.armamento = armamento;
 
+    }
 
-        }
+    public String getArmamento() {
+        return armamento;
+    }
 
-        public String getArmamento() {
-            return armamento;
-        }
+    public void setArmamento(String armamento) {
+        this.armamento = armamento;
+    }
 
-        public void setArmamento(String armamento) {
-            this.armamento = armamento;
-        }
-
-        public void atacar(){
-            this.dano(10);
-        }
-        
-
-        
+    public void atacar() {
+        this.dano(10);
     }
 
 }

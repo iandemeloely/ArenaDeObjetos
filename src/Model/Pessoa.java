@@ -4,8 +4,20 @@ public class Pessoa {
     private String nome;
     private String cabelo;
     private String olho;
+    private String pele;
     private boolean sexo;
-    private int PontosDeVida = 100;
+    private int pontosDeVida = 100;
+
+    public Pessoa() {
+    }
+
+    public Pessoa(String nome, String cabelo, String olho, String pele, boolean sexo) {
+        this.nome = nome;
+        this.cabelo = cabelo;
+        this.olho = olho;
+        this.pele = pele;
+        this.sexo = sexo;
+    }
 
     public String getNome() {
         return nome;
@@ -31,6 +43,14 @@ public class Pessoa {
         this.olho = olho;
     }
 
+    public String getPele() {
+        return pele;
+    }
+
+    public void setPele(String pele) {
+        this.pele = pele;
+    }
+
     public boolean isSexo() {
         return sexo;
     }
@@ -40,34 +60,28 @@ public class Pessoa {
     }
 
     public int getPontosDeVida() {
-        return PontosDeVida;
+        return pontosDeVida;
     }
 
     public void setPontosDeVida(int pontosDeVida) {
-        PontosDeVida = pontosDeVida;
-
+        this.pontosDeVida = pontosDeVida;
     }
 
     @Override
     public String toString() {
-        return "Pessoa [nome=" + nome + ", cabelo=" + cabelo + ", olho=" + olho + ", sexo=" + sexo + ", PontosDeVida="
-                + PontosDeVida + "]";
-
-    }
-
-    public Pessoa() {
-    }
-
-    public Pessoa(String nome, String cabelo, String olho, boolean sexo) {
-        this.nome = nome;
-        this.cabelo = cabelo;
-        this.olho = olho;
-        this.sexo = sexo;
-        
+        return "Pessoa [nome=" + nome + ", cabelo=" + cabelo + ", olho=" + olho + ", pele=" + pele + ", sexo=" + sexo
+                + ", pontosDeVida=" + pontosDeVida + "]";
     }
 
     public void dano(int dano) {
-        this.PontosDeVida = this.PontosDeVida - dano;
+        this.pontosDeVida = this.pontosDeVida - dano;
     }
 
+    public boolean gameOver() {
+        if (this.pontosDeVida <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
