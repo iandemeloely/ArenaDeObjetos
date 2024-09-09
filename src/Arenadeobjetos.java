@@ -65,6 +65,19 @@ public class Arenadeobjetos {
                     System.out.println("Guerreiro " + g.getNome());
                     System.out.println("Armamento " + g.getArmamento());
                     System.out.println("pontos de vida " + g.getPontosDeVida());
+                    
+                }
+                for (Ladrao l : ladroes){
+                    System.out.println("ladrão " + l.getNome());
+                    System.out.println("Plano de fuga " + l.getplanodefuga());
+                    System.out.println("pontos de vida " + l.getPontosDeVida());
+                }
+                for (Pessoa v : vitimas){
+                    System.out.println("vitima " + v.getNome());
+                    System.out.println("cabelo " + v.getCabelo());
+                    System.out.println("pele " + v.getPele());
+                    System.out.println("olho " + v.getOlho());
+                    System.out.println("pontos de vida " + v.getPontosDeVida());
                 }
                 break;
             case 3:
@@ -102,6 +115,7 @@ public class Arenadeobjetos {
                 if (sexoInt == 2) {
                     sexo = true;
                 }
+                g.setSexo(sexo);
                 System.out.println("qual e o armamento do guerreiro ");
                 g.setArmamento(ler.nextLine());
                 guerreiros.add(g);
@@ -127,12 +141,32 @@ public class Arenadeobjetos {
                     sexol = true;
                 }
                 l.setSexo(sexol);
-                System.out.println(" ");
+                System.out.println("Qual e o seu plano de fuga ");
                 l.setplanodefuga(ler.nextLine());
-                guerreiros.add(l);
 
                 break;
             case 3:
+                System.out.println("Criar Vítima");
+                Pessoa v = new Pessoa();
+                System.out.print("Informe o nome da vítima ");
+                v.setNome(ler.nextLine());
+                System.out.print("Informe a cor do olho ");
+                v.setOlho(ler.nextLine());
+                System.out.print("Informe a cor do cabelo ");
+                v.setCabelo(ler.nextLine());
+                System.out.print("Informe a cor da pele ");
+                v.setPele(ler.nextLine());
+                System.out.print("Escolha o sexo\n"
+                        + "1 - Feminino\n"
+                        + "2 - Masculino\n"
+                        + "Digite a opção desejada: ");
+                int sexoIntv = lerint();
+                boolean sexov = false;
+                if (sexoIntv == 2) {
+                    sexov = true;
+                }
+                v.setSexo(sexov);
+                vitimas.add(v);
                 break;
             case 0:
 
