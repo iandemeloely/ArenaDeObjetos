@@ -11,10 +11,12 @@ public class Ladrao extends Pessoa {
         super(nome, cabelo, olho, pele, sexo);
         this.planodefuga = planodefuga;
     }
+
     public String getplanodefuga() {
         return planodefuga;
     }
-    public void setplanodefuga(String panodefuga){
+
+    public void setplanodefuga(String panodefuga) {
         this.planodefuga = panodefuga;
     }
 
@@ -22,7 +24,7 @@ public class Ladrao extends Pessoa {
         return "da no pé";
     }
 
-    public String roubar(){
+    public String roubar() {
         return "Arrastão";
     }
 
@@ -32,8 +34,5 @@ public class Ladrao extends Pessoa {
                 + getCabelo() + ", getOlho()=" + getOlho() + ", getPontosDeVida()=" + getPontosDeVida()
                 + ", getClass()=" + getClass() + "]";
     }
-    
-
-    
 
 }

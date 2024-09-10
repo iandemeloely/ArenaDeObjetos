@@ -4,6 +4,8 @@ import java.util.Scanner;
 import Model.Guerreiro;
 import Model.Ladrao;
 import Model.Pessoa;
+import servicos.ServicosFactory;
+import servicos.VitimaServicos;
 
 public class Arenadeobjetos {
     static Scanner ler = new Scanner(System.in);
@@ -13,15 +15,14 @@ public class Arenadeobjetos {
     static ArrayList<Ladrao> ladroes = new ArrayList<>();
     static ArrayList<Pessoa> vitimas = new ArrayList<>();
 
-    public static int lerint() {
+    public static int lerInt() {
         Scanner ler = new Scanner(System.in);
         int num = 99;
-        try {
+        try {// o que pode dar erro
             num = ler.nextInt();
-        } catch (Exception e) {
-            // TODO: handle exception
-            System.out.println("tente novamente!");
-            lerint();
+        } catch (Exception e) {// tratar o erro
+            System.out.print("Tente Novamente: ");
+            lerInt();
         }
         return num;
     }
@@ -43,7 +44,7 @@ public class Arenadeobjetos {
         String menu = "1 - Criar Personagens: " + "\n2 - Listar personagens: " + "\n3 - Batalha: "
                 + "\n0 - Sair do jogo: " + "\nDigite a opção: ";
         System.out.print(menu);
-        opMP = lerint();
+        opMP = lerInt();
 
     }// fim do menu
 
@@ -53,7 +54,7 @@ public class Arenadeobjetos {
         switch (omP) {
             case 1:
                 System.out.println("1 - Guerreiro" + "\n2 - Ladrão" + "\n3 - Vitima" + "\nDigite opção");
-                int opSM = lerint();
+                int opSM = lerInt();
                 criarpersona(opSM);
 
                 break;
@@ -65,14 +66,14 @@ public class Arenadeobjetos {
                     System.out.println("Guerreiro " + g.getNome());
                     System.out.println("Armamento " + g.getArmamento());
                     System.out.println("pontos de vida " + g.getPontosDeVida());
-                    
+
                 }
-                for (Ladrao l : ladroes){
+                for (Ladrao l : ladroes) {
                     System.out.println("ladrão " + l.getNome());
                     System.out.println("Plano de fuga " + l.getplanodefuga());
                     System.out.println("pontos de vida " + l.getPontosDeVida());
                 }
-                for (Pessoa v : vitimas){
+                for (Pessoa v : vitimas) {
                     System.out.println("vitima " + v.getNome());
                     System.out.println("cabelo " + v.getCabelo());
                     System.out.println("pele " + v.getPele());
@@ -110,7 +111,7 @@ public class Arenadeobjetos {
                         + "1 - Feminino\n"
                         + "2 - Masculino\n"
                         + "Digite a opção desejada: ");
-                int sexoInt = lerint();
+                int sexoInt = lerInt();
                 boolean sexo = false;
                 if (sexoInt == 2) {
                     sexo = true;
@@ -135,7 +136,7 @@ public class Arenadeobjetos {
                         + "1 - Feminino\n"
                         + "2 - Masculino\n"
                         + "Digite a opção desejada: ");
-                int sexoIntl = lerint();
+                int sexoIntl = lerInt();
                 boolean sexol = false;
                 if (sexoIntl == 2) {
                     sexol = true;
@@ -160,13 +161,15 @@ public class Arenadeobjetos {
                         + "1 - Feminino\n"
                         + "2 - Masculino\n"
                         + "Digite a opção desejada: ");
-                int sexoIntv = lerint();
+                int sexoIntv = lerInt();
                 boolean sexov = false;
                 if (sexoIntv == 2) {
                     sexov = true;
                 }
                 v.setSexo(sexov);
                 vitimas.add(v);
+                VitimaServicos vs = ServicosFactory.getVitimaServicos();
+                vs.cadastrarvitima(v);
                 break;
             case 0:
 
