@@ -80,6 +80,18 @@ public class Arenadeobjetos {
                     System.out.println("olho " + v.getOlho());
                     System.out.println("pontos de vida " + v.getPontosDeVida());
                 }
+
+                System.out.println("-- Ladroes Ram --");
+                System.out.println(ladroes.toString());
+                System.out.println("-- vitimas Ram --");
+                System.out.println(vitimas.toString());
+                System.out.println("-- Vitimas Do banco de Dados --");
+                VitimaServicos vs = ServicosFactory.getVitimaServicos();
+                System.out.println(vs.listaVitimas().toString());
+
+                System.out.println("--busca vitima por nome --");
+                System.out.println(vs.buscaVitimabynome("ian").toString());
+
                 break;
             case 3:
                 break;

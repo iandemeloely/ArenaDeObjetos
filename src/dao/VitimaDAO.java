@@ -31,18 +31,65 @@ public class VitimaDAO {
         }
     }
 
-    public ArrayList<Pessoa> getVitimas(){
+    public ArrayList<Pessoa> getVitimas() {
         ArrayList<Pessoa> vitimas = new ArrayList<>();
         try {
             Connection con = Conexao.getConnection();
-            String sql = "select * from pessoa " + "Where armamanto is null " + "and planodefuga is null";
+            String sql = "select * from pessoa " + "Where armamento is null " + "and planodefuga is null";
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-        
+
+            while (rs.next()) {
+                Pessoa vitima = new Pessoa();
+                vitima.setNome(rs.getString("nome"));
+                vitima.setCabelo(rs.getString("cabelo"));
+                vitima.setOlho(rs.getString("olho"));
+                vitima.setPele(rs.getString("pele"));
+                vitima.setSexo(rs.getBoolean("sexo"));
+                vitima.setPontosDeVida(rs.getInt("pontosdevida"));
+                vitimas.add(vitima);
+            }
+
         } catch (SQLException e) {
             System.out.println("Erro ao listar vitima.\n" + e.getMessage());
         }
         return vitimas;
+    }
+
+    public Pessoa getVitimabyname(String name) {
+        Pessoa v = new Pessoa();
+        try{
+            Connection con = Conexao.getConnection();
+            String sql = "select * from pessoa where nome like %?%";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, name);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Pessoa vitima = new Pessoa();
+                vitima.setId(rs.getInt("id"));
+                vitima.setNome(rs.getString("nome"));
+                vitima.setCabelo(rs.getString("cabelo"));
+                vitima.setOlho(rs.getString("olho"));
+                vitima.setPele(rs.getString("pele"));
+                vitima.setSexo(rs.getBoolean("sexo"));
+                vitima.setPontosDeVida(rs.getInt("pontosdevida"));
+            }
+            
+        }catch (SQLException e) {
+            System.out.println("ERRO ao buscar Vitima.\n" + e.getMessage());
+        }
+
+        return v;
+    }
+
+    public void atualizarVitima(Pessoa vVO) {
+
+    }
+
+    public boolean deletarVitima(String nome) {
+
+        return true;
     }
 
 }
