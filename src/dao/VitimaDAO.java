@@ -40,14 +40,14 @@ public class VitimaDAO {
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                Pessoa vitima = new Pessoa();
-                vitima.setNome(rs.getString("nome"));
-                vitima.setCabelo(rs.getString("cabelo"));
-                vitima.setOlho(rs.getString("olho"));
-                vitima.setPele(rs.getString("pele"));
-                vitima.setSexo(rs.getBoolean("sexo"));
-                vitima.setPontosDeVida(rs.getInt("pontosdevida"));
-                vitimas.add(vitima);
+                Pessoa v = new Pessoa();
+                v.setNome(rs.getString("nome"));
+                v.setCabelo(rs.getString("cabelo"));
+                v.setOlho(rs.getString("olho"));
+                v.setPele(rs.getString("pele"));
+                v.setSexo(rs.getBoolean("sexo"));
+                v.setPontosDeVida(rs.getInt("pontosdevida"));
+                vitimas.add(v);
             }
 
         } catch (SQLException e) {
