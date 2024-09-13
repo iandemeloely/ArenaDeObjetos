@@ -88,9 +88,31 @@ public class Arenadeobjetos {
                 System.out.println("-- Vitimas Do banco de Dados --");
                 VitimaServicos vs = ServicosFactory.getVitimaServicos();
                 System.out.println(vs.listaVitimas().toString());
-
+                // teste do update
+                // busca vitima
                 System.out.println("--busca vitima por nome --");
-                System.out.println(vs.buscaVitimabynome("ian").toString());
+                System.out.println(vs.buscaVitimabynome("%ian%").toString());
+                // atualiza cabelo
+                Pessoa vUp = vs.buscaVitimabynome("%ian%");
+                vUp.setCabelo("vermelho");
+
+                vs.atualizarVitima(vUp);
+                System.out.println("-- Vitima atualizada --");
+                System.out.println(vs.buscaVitimabynome("%ian%").toString());
+
+                System.out.println("-- deletar vitima --");
+                int id = vs.buscaVitimabynome("%jair%").getId();
+                // executa atulização no banco
+                boolean vdelete = vs.deletarVitima(id);
+                if ((vdelete)) {
+                    
+                }
+                if (vs.deletarVitima(id)) {
+                    System.out.println("vitima deletada");
+                    System.out.println("vitima deletada");
+                } else {
+                    System.out.println("vitima não deletada");
+                }
 
                 break;
             case 3:

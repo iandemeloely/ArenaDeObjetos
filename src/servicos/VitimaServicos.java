@@ -22,4 +22,12 @@ public class VitimaServicos {
         return vDao.getVitimabyname(nome);
     }
 
+    public void atualizarVitima(Pessoa vVO) {
+        vDao.atualizarVitima(vVO);
+    }
+
+    public boolean deletarVitima(int id) {
+        return vDao.deletarVitima(id);
+    }
+
 }
