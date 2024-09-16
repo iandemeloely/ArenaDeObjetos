@@ -8,4 +8,10 @@ public class DAOfactory {
         return vDao;
     }
 
+    private static GuerreiroDAO GDao = new GuerreiroDAO();
+
+    public static GuerreiroDAO geGuerreiroDAO() {
+        return GDao;
+    }
+
 }

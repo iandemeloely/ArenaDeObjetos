@@ -7,4 +7,10 @@ public class ServicosFactory {
         return vitimaS;
     }
 
+        public static GuerreiroServicos GuerreiroS = new GuerreiroServicos();
+    
+        public static GuerreiroServicos getGuerreiroServicos() {
+            return GuerreiroS;
+        }
+
 }

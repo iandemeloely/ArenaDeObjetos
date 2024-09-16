@@ -4,6 +4,7 @@ import java.util.Scanner;
 import Model.Guerreiro;
 import Model.Ladrao;
 import Model.Pessoa;
+import servicos.GuerreiroServicos;
 import servicos.ServicosFactory;
 import servicos.VitimaServicos;
 
@@ -41,7 +42,7 @@ public class Arenadeobjetos {
     }
 
     public static void menuP() {
-        String menu = "1 - Criar Personagens: " + "\n2 - Listar personagens: " + "\n3 - Batalha: "
+        String menu = "1 - Criar Personagens: " + "\n2 - Listar personagens: " + "\n3 - Listar Guerreiro: "
                 + "\n0 - Sair do jogo: " + "\nDigite a opção: ";
         System.out.print(menu);
         opMP = lerInt();
@@ -116,6 +117,35 @@ public class Arenadeobjetos {
 
                 break;
             case 3:
+
+            System.out.println("-- Guerreiro Do banco de Dados --");
+                GuerreiroServicos gs = ServicosFactory.getGuerreiroServicos();
+                System.out.println(gs.listaguerreiro().toString());
+                // busca guerreiro
+                System.out.println("--busca guerreiro por nome --");
+                System.out.println(gs.buscaguerreirobynome("%ian%").toString());
+                // atualiza cabelo
+                Guerreiro gUp = gs.buscaguerreirobynome("%ian%");
+                gUp.setCabelo("purpura");
+                gs.atualizarguerreiro(gUp);
+                System.out.println("-- guerreiro atualizado --");
+                System.out.println(gs.buscaguerreirobynome("%ian%").toString());
+
+                System.out.println("-- deletar Guerreiro --");
+                int idg = gs.buscaguerreirobynome("%luis%").getId();
+                // executa atulização no banco
+                boolean gdelete = gs.deletarguerreiro(idg);
+                if ((gdelete)) {
+                    
+                }
+                if (gs.deletarguerreiro(idg)) {
+                    System.out.println("Guerreiro deletado");
+                    System.out.println("Guerreiro deletado");
+                } else {
+                    System.out.println("Guerreiro não deletado");
+                }
+                
+
                 break;
             case 0:
                 System.out.println("Arena de Objetos encerrado pelo usuario");
@@ -153,7 +183,9 @@ public class Arenadeobjetos {
                 g.setSexo(sexo);
                 System.out.println("qual e o armamento do guerreiro ");
                 g.setArmamento(ler.nextLine());
-                guerreiros.add(g);
+                vitimas.add(g);
+                GuerreiroServicos gs = ServicosFactory.getGuerreiroServicos();
+                gs.cadastrarguerreiro(g);
                 break;
             case 2:
                 System.out.println("Criar Ladrão");
