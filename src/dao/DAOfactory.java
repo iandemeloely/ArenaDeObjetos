@@ -14,4 +14,11 @@ public class DAOfactory {
         return GDao;
     }
 
+    private static LadraoDAO lDao = new LadraoDAO();
+
+    public static LadraoDAO geLadrDao() {
+        return lDao;
+    }
+
+
 }

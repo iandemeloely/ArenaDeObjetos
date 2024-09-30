@@ -41,6 +41,7 @@ public class VitimaDAO {
 
             while (rs.next()) {
                 Pessoa v = new Pessoa();
+                v.setId(rs.getInt("id"));
                 v.setNome(rs.getString("nome"));
                 v.setCabelo(rs.getString("cabelo"));
                 v.setOlho(rs.getString("olho"));
@@ -83,13 +84,43 @@ public class VitimaDAO {
         return v;
     }
 
+    public Pessoa getVitimabyID(int id) {
+        Pessoa v = new Pessoa();
+        try {
+            Connection con = Conexao.getConnection();
+            String sql = "select * from pessoa where id = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                v.setId(rs.getInt("id"));
+                v.setNome(rs.getString("nome"));
+                v.setCabelo(rs.getString("cabelo"));
+                v.setOlho(rs.getString("olho"));
+                v.setPele(rs.getString("pele"));
+                v.setSexo(rs.getBoolean("sexo"));
+                v.setPontosDeVida(rs.getInt("pontosdevida"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO ao buscar Vitima.\n" + e.getMessage());
+        }
+
+        return v;
+    }
+
     public void atualizarVitima(Pessoa vVO) {
         try {
             Connection con = Conexao.getConnection();
-            String sql = "update pessoa set cabelo = ? where id = ? ";
+            String sql = "update pessoa set nome = ?, olho = ?, pele = ?, cabelo = ? where id = ? ";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, vVO.getCabelo());
-            pst.setInt(2, vVO.getId());
+            pst.setString(1, vVO.getNome());
+            pst.setString(2, vVO.getOlho());
+            pst.setString(3, vVO.getPele());
+            pst.setString(4, vVO.getCabelo());
+            pst.setInt(5, vVO.getId());
             pst.executeUpdate();
 
         } catch (SQLException e) {
@@ -98,18 +129,18 @@ public class VitimaDAO {
     }
 
     public boolean deletarVitima(int id) {
-        
-        try{
+
+        try {
             Connection con = Conexao.getConnection();
             String sql = "delete from pessoa where id = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, id);
             return pst.executeUpdate() != 0;
-            
-        }catch (SQLException e) {
+
+        } catch (SQLException e) {
             System.out.println("Erro ao deletar vitima.\n" + e.getMessage());
         }
-        
+
         return true;
 
     }

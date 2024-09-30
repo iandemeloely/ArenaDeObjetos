@@ -29,5 +29,9 @@ public class VitimaServicos {
     public boolean deletarVitima(int id) {
         return vDao.deletarVitima(id);
     }
+    
+    public Pessoa getVitimaById (int id){
+        return vDao.getVitimabyID(id);
+    }
 
 }

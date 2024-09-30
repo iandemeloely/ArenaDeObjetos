@@ -13,4 +13,10 @@ public class ServicosFactory {
             return GuerreiroS;
         }
 
+        public static LadraoServicos LadraoS = new LadraoServicos();
+    
+        public static LadraoServicos getLadraoServicos() {
+            return LadraoS;
+        }
+
 }

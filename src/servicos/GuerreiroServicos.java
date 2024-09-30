@@ -1,13 +1,14 @@
 package servicos;
 
-
-    import java.util.ArrayList;
+import java.util.ArrayList;
 
 import Model.Guerreiro;
+import Model.Pessoa;
 import dao.DAOfactory;
 import dao.GuerreiroDAO;
 
 public class GuerreiroServicos {
+
     GuerreiroDAO gDao = DAOfactory.geGuerreiroDAO();
 
     public void cadastrarguerreiro(Guerreiro gVO) {
@@ -31,7 +32,7 @@ public class GuerreiroServicos {
         return gDao.deletarGuerreriro(id);
     }
 
+    public Guerreiro getGuerreirobyID(int id) {
+        return gDao.getGuerreirobyID(id);
+    }
 }
-
-
-

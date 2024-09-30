@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,8 +8,10 @@ import Model.Pessoa;
 import servicos.GuerreiroServicos;
 import servicos.ServicosFactory;
 import servicos.VitimaServicos;
+import view.Principal;
 
 public class Arenadeobjetos {
+
     static Scanner ler = new Scanner(System.in);
     static int opMP;
 
@@ -30,15 +33,16 @@ public class Arenadeobjetos {
 
     public static void main(String[] args) {
 
-        System.out.println(".:Arena De Obejetos:.");
-        do {
-            menuP();
-            subMenu(opMP);
-        } while (opMP != 0);
-        {
-
-        }
-
+//        System.out.println(".:Arena De Obejetos:.");
+//        do {
+//            menuP();
+//            subMenu(opMP);
+//        } while (opMP != 0);
+//        {
+//
+//        }
+        Principal janelaP = new Principal();
+        janelaP.setVisible(true);
     }
 
     public static void menuP() {
@@ -106,7 +110,7 @@ public class Arenadeobjetos {
                 // executa atulização no banco
                 boolean vdelete = vs.deletarVitima(id);
                 if ((vdelete)) {
-                    
+
                 }
                 if (vs.deletarVitima(id)) {
                     System.out.println("vitima deletada");
@@ -118,7 +122,7 @@ public class Arenadeobjetos {
                 break;
             case 3:
 
-            System.out.println("-- Guerreiro Do banco de Dados --");
+                System.out.println("-- Guerreiro Do banco de Dados --");
                 GuerreiroServicos gs = ServicosFactory.getGuerreiroServicos();
                 System.out.println(gs.listaguerreiro().toString());
                 // busca guerreiro
@@ -136,7 +140,7 @@ public class Arenadeobjetos {
                 // executa atulização no banco
                 boolean gdelete = gs.deletarguerreiro(idg);
                 if ((gdelete)) {
-                    
+
                 }
                 if (gs.deletarguerreiro(idg)) {
                     System.out.println("Guerreiro deletado");
